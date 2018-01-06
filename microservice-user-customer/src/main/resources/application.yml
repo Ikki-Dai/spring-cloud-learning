@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: micorservice-ribbon-customer
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
+
+server:
+  port: 0 
+  #${random.int[9090,9099]}
+  
+  
+eureka:
+  client:
+    service-url:
+          defaultZone: http://localhost:8761/eureka
+          port: ${server.port}
+          
+  instance:
+    instance-id: ${spring.application.name}:${server.port}:${random.int[200,299]}
+    
+info:
+  app.name: ${spring.application.name}
+  version: v0.0.1    
+      
+#logging:
+#  level:
+#    #com.netflix.discovery.DiscoveryClient: debug
+#    com.netflix.appinfo.InstanceInfo: debug          

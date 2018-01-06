@@ -1,0 +1,22 @@
+server:
+  port: 0
+  
+  compression:
+    enabled: true
+    
+spring:
+  application:
+    name: micorservice-feign-consumer        
+#logging:
+#  level:
+#    com.ikki.cloud.feign.consumer.service.helloService: debug
+#    
+    
+eureka:
+  client:
+    service-url:
+          defaultZone: http://localhost:8761/eureka
+          port: ${server.port}
+          
+  instance:
+    instance-id: ${spring.application.name}:${server.port}:${random.int[100,199]}    

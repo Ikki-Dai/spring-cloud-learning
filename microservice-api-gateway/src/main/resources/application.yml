@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: cloud-api-gateway
+    
+server:
+  port: 5555
+  
+
+zuul:
+  routes:
+    api-a-url.path: /api-a-url/**
+    #traditional config routers  
+    #url: http://localhost:8080/
+    api-a-url.serviceId: feign-consumer      

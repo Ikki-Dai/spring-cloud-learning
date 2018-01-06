@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: micorservice-user-service
+
+server:
+  port: 0
+  #${random.int[8080,8099]}
+    
+eureka:
+  client:
+    service-url:
+          defaultZone: http://localhost:8761/eureka
+          port: ${server.port}
+          
+  instance:
+    instance-id: ${spring.application.name}:${server.port}:${random.int[100,199]}
+# seems have a bug here, while service provider use random port
+# the link in eureka Dashboard are not available... port error     
+# seems eureka port have defined before server port get the random value
+    
+info:
+  app.name: ${spring.application.name}
+  version: v0.0.1
